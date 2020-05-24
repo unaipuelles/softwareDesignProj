@@ -2,10 +2,13 @@ package src.java.proyectodisenosoftware;
 
 import java.util.List;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+import java.util.concurrent.ThreadLocalRandom;
+
 import model.Attribute;
-import model.Guerrero;
 import model.Character;
+import factory.*;
+import model.enemy.Dragon;
+import model.enemy.Orc;
 
 /**
  *
@@ -13,15 +16,22 @@ import model.Character;
  * @author daviddominguez
  */
 public class main {
-
+    
+    public static final int ATRIBUTOSCUSTOM = 8;
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         Character personaje = characterSelection();
         personaje = personalizeAttributes(personaje);
+        
+        startGame(personaje);
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public static Character characterSelection(){
         boolean error = false;
         Character personaje = null;
@@ -51,9 +61,14 @@ public class main {
         return personaje;
     }
     
+    /**
+     * Personaliza los atrtibutos de un personaje
+     * @param personaje Objeto que queremos personalizar
+     * @return Personaje personalizado
+     */
     public static Character personalizeAttributes(Character personaje) {
         boolean error = false;
-        int puntos = 8;
+        int puntos = ATRIBUTOSCUSTOM;
         List<Attribute> atributos = personaje.getAttributes();
         do{
             showAllAttributes(atributos);
@@ -120,7 +135,36 @@ public class main {
                 encontrado = true;
             }
         }
-        
         return atributo;
+    }
+    
+    /*public static Character generateEnemyCharacter() {
+        Character enemigo = new Character(randomNum(1, 3));
+
+        int puntos = ATRIBUTOSCUSTOM;
+        List<Attribute> atributos = enemigo.getAttributes();
+        do{
+            int randNumType = randomNum(0, 5);
+            int randNum = randomNum(0, puntos);
+            Attribute attributeTmp = atributos.get(randNumType);
+            attributeTmp.setValor(attributeTmp.getValor() + randNum);
+            puntos = puntos - randNum;
+            
+        }while(puntos > 0 && puntos <= ATRIBUTOSCUSTOM);
+        return enemigo;
+    }*/
+    
+    public static int randomNum(int from, int to) {
+        return ThreadLocalRandom.current().nextInt(from, to + 1);
+    }
+    
+    public static void startGame(Character character) {
+        //Character enemigo = generateEnemyCharacter();
+        EnemyFactory enemyFactory = new EnemyFactoryCastle();
+        /*Dragon dragonCastle = enemyFactory.createDragon();
+        Orc orcCastle = enemyFactory.createOrc();
+        enemyFactory = new EnemyFactoryMeadow();
+        Dragon dragonCastle2 = enemyFactory.createDragon();
+        Orc orcCastle2 = enemyFactory.createOrc();*/
     }
 }
