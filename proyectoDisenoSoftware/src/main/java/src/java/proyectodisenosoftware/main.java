@@ -2,9 +2,13 @@ package src.java.proyectodisenosoftware;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
+
 import model.Attribute;
 import model.Character;
-import java.util.concurrent.ThreadLocalRandom;
+import factory.*;
+import model.enemy.Dragon;
+import model.enemy.Orc;
 
 /**
  *
@@ -22,9 +26,12 @@ public class main {
         Character personaje = characterSelection();
         personaje = personalizeAttributes(personaje);
         
-        Character enemigo = generateEnemyCharacter();
+        startGame(personaje);
     }
-    
+    /**
+     * 
+     * @return 
+     */
     public static Character characterSelection(){
         boolean error = false;
         Character personaje = null;
@@ -54,6 +61,11 @@ public class main {
         return personaje;
     }
     
+    /**
+     * Personaliza los atrtibutos de un personaje
+     * @param personaje Objeto que queremos personalizar
+     * @return Personaje personalizado
+     */
     public static Character personalizeAttributes(Character personaje) {
         boolean error = false;
         int puntos = ATRIBUTOSCUSTOM;
@@ -126,7 +138,7 @@ public class main {
         return atributo;
     }
     
-    public static Character generateEnemyCharacter() {
+    /*public static Character generateEnemyCharacter() {
         Character enemigo = new Character(randomNum(1, 3));
 
         int puntos = ATRIBUTOSCUSTOM;
@@ -140,9 +152,19 @@ public class main {
             
         }while(puntos > 0 && puntos <= ATRIBUTOSCUSTOM);
         return enemigo;
-    }
+    }*/
     
     public static int randomNum(int from, int to) {
         return ThreadLocalRandom.current().nextInt(from, to + 1);
+    }
+    
+    public static void startGame(Character character) {
+        //Character enemigo = generateEnemyCharacter();
+        EnemyFactory enemyFactory = new EnemyFactoryCastle();
+        /*Dragon dragonCastle = enemyFactory.createDragon();
+        Orc orcCastle = enemyFactory.createOrc();
+        enemyFactory = new EnemyFactoryMeadow();
+        Dragon dragonCastle2 = enemyFactory.createDragon();
+        Orc orcCastle2 = enemyFactory.createOrc();*/
     }
 }
