@@ -17,6 +17,7 @@ public class Character {
     private static final String SGIGANTE = "Gigante";
     private String name;
     private List<Attribute> attributes;
+    private List<Attack> attacks;
     private Status status;
     private int type;
 
@@ -34,14 +35,17 @@ public class Character {
             case GUERRERO:
                 name = SGUERRERO;
                 attributes = getAllAttributesDefault(3,2,1,1,0,3);
+                attacks = getAllAttacksGuerrero();
             break;
             case MAGO:
                 name = SMAGO;
                 attributes = getAllAttributesDefault(1,3,2,2,1,1);
+                attacks = getAllAttacksMago();
             break;
             case GIGANTE:
                 name = SGIGANTE;
                 attributes = getAllAttributesDefault(4,0,0,2,4,0);
+                attacks = getAllAttacksGigante();
             break;
         }
     }
@@ -71,5 +75,35 @@ public class Character {
         atributos.add(new Attribute(Attribute.DEFENSA, defensa));
         atributos.add(new Attribute(Attribute.ATAQUE, ataque));
         return atributos;
+    }
+    
+    private List<Attack> getAllAttacksGuerrero() {
+        List<Attack> ataques = new ArrayList();
+        ataques.add(new Attack("Ataque espada", 15));
+        ataques.add(new Attack("Golpe con mango", 8));
+        ataques.add(new Attack("Puñetazo", 6));
+        ataques.add(new Attack("Patada", 4));
+        
+        return ataques;
+    }
+    
+    private List<Attack> getAllAttacksMago() {
+        List<Attack> ataques = new ArrayList();
+        ataques.add(new Attack("Bola de magia", 18));
+        ataques.add(new Attack("Tornado", 10));
+        ataques.add(new Attack("Bofetada", 3));
+        ataques.add(new Attack("Golpear con la varita", 1));
+        
+        return ataques;
+    }
+    
+    private List<Attack> getAllAttacksGigante() {
+        List<Attack> ataques = new ArrayList();
+        ataques.add(new Attack("Aplastar con el pie", 25));
+        ataques.add(new Attack("Pandereta", 8));
+        ataques.add(new Attack("Golpear con el dedo", 5));
+        ataques.add(new Attack("Escupitajo", 2));
+        
+        return ataques;
     }
 }

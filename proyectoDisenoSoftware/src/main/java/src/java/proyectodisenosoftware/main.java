@@ -8,6 +8,7 @@ import model.Attribute;
 import model.Character;
 import factory.*;
 import model.enemy.Dragon;
+import model.enemy.Enemy;
 import model.enemy.Orc;
 
 /**
@@ -161,9 +162,19 @@ public class main {
     public static void startGame(Character character) {
         //Character enemigo = generateEnemyCharacter();
         EnemyFactory enemyFactory = new EnemyFactoryCastle();
-        /*Dragon dragonCastle = enemyFactory.createDragon();
-        Orc orcCastle = enemyFactory.createOrc();
-        enemyFactory = new EnemyFactoryMeadow();
+        Enemy dragonCastle = (Enemy) enemyFactory.createDragon();
+        
+        /*if(ssfgsdt){
+            Dragon dragonCastle = enemyFactory.createDragon();
+        }
+        else {
+            Orc orcCastle = enemyFactory.createOrc();
+        }*/
+        
+        System.out.println();
+        
+        
+        /*enemyFactory = new EnemyFactoryMeadow();
         Dragon dragonCastle2 = enemyFactory.createDragon();
         Orc orcCastle2 = enemyFactory.createOrc();*/
     }
