@@ -10,6 +10,7 @@ import factory.*;
 import model.enemy.Dragon;
 import model.enemy.Enemy;
 import model.enemy.Orc;
+import fight.Combat;
 
 /**
  *
