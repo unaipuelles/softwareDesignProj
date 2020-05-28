@@ -11,6 +11,9 @@ import model.enemy.Dragon;
 import model.enemy.Enemy;
 import model.enemy.Orc;
 import fight.Combat;
+import strategy.GetStrategyValuesAttacker;
+import strategy.GetStrategyValuesDefender;
+import strategy.ValuesStrategy;
 
 /**
  *
@@ -140,43 +143,30 @@ public class main {
         return atributo;
     }
     
-    /*public static Character generateEnemyCharacter() {
-        Character enemigo = new Character(randomNum(1, 3));
-
-        int puntos = ATRIBUTOSCUSTOM;
-        List<Attribute> atributos = enemigo.getAttributes();
-        do{
-            int randNumType = randomNum(0, 5);
-            int randNum = randomNum(0, puntos);
-            Attribute attributeTmp = atributos.get(randNumType);
-            attributeTmp.setValor(attributeTmp.getValor() + randNum);
-            puntos = puntos - randNum;
-            
-        }while(puntos > 0 && puntos <= ATRIBUTOSCUSTOM);
-        return enemigo;
-    }*/
-    
     public static int randomNum(int from, int to) {
         return ThreadLocalRandom.current().nextInt(from, to + 1);
     }
     
     public static void startGame(Character character) {
-        //Character enemigo = generateEnemyCharacter();
+        firstMap();
+    }
+    
+    public static void firstMap() {
         EnemyFactory enemyFactory = new EnemyFactoryCastle();
-        Enemy dragonCastle = (Enemy) enemyFactory.createDragon();
-        
-        /*if(ssfgsdt){
-            Dragon dragonCastle = enemyFactory.createDragon();
+        Dragon dragonCastle = enemyFactory.createDragon();
+        ValuesStrategy valuesStrategy = null;
+        valuesStrategy = getRandomStrategy(valuesStrategy);
+        dragonCastle.setStrategy(valuesStrategy);s
+    }
+    
+    public static ValuesStrategy getRandomStrategy(ValuesStrategy valuesStrategy) {
+        int rand = randomNum(0, 1);
+        if(rand == 0) {
+            valuesStrategy = new ValuesStrategy(new GetStrategyValuesAttacker());
         }
-        else {
-            Orc orcCastle = enemyFactory.createOrc();
-        }*/
-        
-        System.out.println();
-        
-        
-        /*enemyFactory = new EnemyFactoryMeadow();
-        Dragon dragonCastle2 = enemyFactory.createDragon();
-        Orc orcCastle2 = enemyFactory.createOrc();*/
+        else{
+            valuesStrategy = new ValuesStrategy(new GetStrategyValuesDefender());
+        }
+        return valuesStrategy;
     }
 }
