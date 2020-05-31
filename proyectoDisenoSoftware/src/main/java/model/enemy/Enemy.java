@@ -8,14 +8,13 @@ package model.enemy;
 import java.util.ArrayList;
 import java.util.List;
 import model.Attribute;
-import model.Status;
 import model.Attack;
 import strategy.ValuesStrategy;
 
 public abstract class Enemy {
     protected String name;
     protected List<Attribute> attributes;
-    protected Status status;
+    //protected Status status;
     protected List<Attack> attacks;
     protected ValuesStrategy strategy;
     

@@ -156,7 +156,7 @@ public class main {
         Dragon dragonCastle = enemyFactory.createDragon();
         ValuesStrategy valuesStrategy = null;
         valuesStrategy = getRandomStrategy(valuesStrategy);
-        dragonCastle.setStrategy(valuesStrategy);s
+        dragonCastle.setStrategy(valuesStrategy);
     }
     
     public static ValuesStrategy getRandomStrategy(ValuesStrategy valuesStrategy) {

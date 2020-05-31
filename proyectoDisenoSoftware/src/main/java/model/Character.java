@@ -18,7 +18,7 @@ public class Character {
     private String name;
     private List<Attribute> attributes;
     private List<Attack> attacks;
-    private Status status;
+    //private Status status;
     private int type;
 
     public Character(int type) {
@@ -58,13 +58,15 @@ public class Character {
         this.attributes = attributes;
     }
 
+    /*
     public Status getStatus() {
-        return status;
+       // return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
     }
+*/
     
     private List<Attribute> getAllAttributesDefault(int fuerza, int resistencia, int agilidad, int salud, int defensa, int ataque){
         List<Attribute> atributos = new ArrayList();
