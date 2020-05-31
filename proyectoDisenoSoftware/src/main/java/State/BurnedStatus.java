@@ -7,8 +7,12 @@ package State;
  */
 
 public class BurnedStatus extends StatusType {
-   
+    
     public BurnedStatus(Status status) {
         super (status);
+        this.effect='D';
+        this.name="quemado";
+        this.duration=5;
     }
+    
 }
