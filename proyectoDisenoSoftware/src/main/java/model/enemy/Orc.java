@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Attribute;
-import model.Attack;
+import decorator.Attack;
 
 public abstract class Orc extends Enemy{
 

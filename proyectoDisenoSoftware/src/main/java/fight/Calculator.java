@@ -2,7 +2,7 @@ package fight;
 
 import State.Status;
 import java.util.List;
-import model.Attack;
+import decorator.Attack;
 import model.Attribute;
 
 
@@ -21,18 +21,12 @@ public class Calculator {
    
    private static Calculator instance = null;
     
-   private Calculator(List<Attribute> attackerAtribb,List<Attribute> defenderAttrib,Status attackerStatus,Status defenderStatus,Attack attack) {
-   this.attackerAtribb=attackerAtribb;
-   this.defenderAttrib=defenderAttrib;
-   this.attackerStatus=attackerStatus;
-   this.defenderStatus=defenderStatus;
-   this.attack=attack;
-       
+   private Calculator() {    
    } 
    
-   public static Calculator getInstance(List<Attribute> attackerAtribb,List<Attribute> defenderAttrib,Status attackerStatus,Status defenderStatus,Attack attack) {
+   public static Calculator getInstance() {
        if(instance == null)
-           instance = new Calculator(attackerAtribb,defenderAttrib,attackerStatus,defenderStatus,attack);
+           instance = new Calculator();
        else
            System.out.println("Error, ya existe un objeto de tipo Calculator");
        
@@ -44,32 +38,56 @@ public class Calculator {
        int damage =0;
        
        if(attackerStatus.getStatus()=='M')
-       {
-           
+       {  
            System.out.println("El atacante esta paralizado, no se puede mover.");
            return damage;
-           
        }
        else
-       {
-           
+       { 
            //Sumar a damage el daño que hace el atacante segun sus atributos
            //...
            
            //Sumar a damage el daño del estado del enemigo si esta quemado/corona
            if(defenderStatus.getStatus()=='D')
            {
-               
                damage+=50; //Sumarle el daño comun a todos los efectos de daño
-               System.out.println("El enemigo está " + defenderStatus.getName() + ", recibirá un extra de daño.");
-               
+               System.out.println("El enemigo está " + defenderStatus.getName() + ", recibirá un extra de daño.");         
            }
-           
            return damage;
-           
-       }
-       
-       
+       }   
    }
    
+   @Override
+    public Calculator clone() {
+        try {
+            throw new CloneNotSupportedException();
+        } catch (CloneNotSupportedException ex) {
+            System.out.println("[ERROR] No se puede clonar una clase Calculator");
+        }
+        return null; 		
+    }
+
+    public void setAttackerAtribb(List<Attribute> attackerAtribb) {
+        this.attackerAtribb = attackerAtribb;
+    }
+
+    public void setDefenderAttrib(List<Attribute> defenderAttrib) {
+        this.defenderAttrib = defenderAttrib;
+    }
+
+    public void setAttackerStatus(Status attackerStatus) {
+        this.attackerStatus = attackerStatus;
+    }
+
+    public void setDefenderStatus(Status defenderStatus) {
+        this.defenderStatus = defenderStatus;
+    }
+
+    public void setAttack(Attack attack) {
+        this.attack = attack;
+    }
+
+    public static void setInstance(Calculator instance) {
+        Calculator.instance = instance;
+    }
 }

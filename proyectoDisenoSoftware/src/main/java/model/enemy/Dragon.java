@@ -9,7 +9,7 @@ package model.enemy;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Attack;
+import decorator.Attack;
 import model.Attribute;
 
 public abstract class Dragon extends Enemy{

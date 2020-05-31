@@ -1,22 +1,26 @@
 package model.enemy;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import State.Status;
+import model.Attribute;
+import decorator.Attack;
+import strategy.ValuesStrategy;
+
 /**
  *
  * @author unaipuelles
  * @author daviddominguez
  */
-
-import java.util.ArrayList;
-import java.util.List;
-import model.Attribute;
-import model.Attack;
-import strategy.ValuesStrategy;
-
 public abstract class Enemy {
     protected String name;
     protected List<Attribute> attributes;
-    //protected Status status;
+    protected Status status; //Hay que inicializarlo
     protected List<Attack> attacks;
     protected ValuesStrategy strategy;
+    protected String enviroment;
+    protected int hp = 100;
     
     public List<Attribute> getAllAttributesDefault(int fuerza, int resistencia, int agilidad, int salud, int defensa, int ataque){
         List<Attribute> atributos = new ArrayList();
@@ -31,5 +35,37 @@ public abstract class Enemy {
 
     public void setStrategy(ValuesStrategy strategy) {
         this.strategy = strategy;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public List<Attack> getAttacks() {
+        return attacks;
+    }
+
+    public ValuesStrategy getStrategy() {
+        return strategy;
+    }
+
+    public String getEnviroment() {
+        return enviroment;
+    }
+
+    public void setAttacks(List<Attack> attacks) {
+        this.attacks = attacks;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 }

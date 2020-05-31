@@ -1,5 +1,7 @@
 package model;
 
+import State.Status;
+import decorator.Attack;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,8 +20,9 @@ public class Character {
     private String name;
     private List<Attribute> attributes;
     private List<Attack> attacks;
-    //private Status status;
-    private int type;
+    private Status status; //Hay que inicializarlo
+    private final int type;
+    private int hp = 100;
 
     public Character(int type) {
         this.type = type;
@@ -28,6 +31,34 @@ public class Character {
     
     public String getName() {
         return name;
+    }
+    
+    public List<Attribute> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(List<Attribute> attributes) {
+        this.attributes = attributes;
+    }
+    
+    public List<Attack> getAttacks() {
+        return attacks;
+    }
+
+    public void setAttacks(List<Attack> attacks) {
+        this.attacks = attacks;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public int getHp() {
+        return hp;
+    }
+    
+    public void setHp(int hp) {
+        this.hp = hp;
     }
 
     private void setNameAndDefaultAttributes() {
@@ -49,24 +80,6 @@ public class Character {
             break;
         }
     }
-
-    public List<Attribute> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(List<Attribute> attributes) {
-        this.attributes = attributes;
-    }
-
-    /*
-    public Status getStatus() {
-       // return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-*/
     
     private List<Attribute> getAllAttributesDefault(int fuerza, int resistencia, int agilidad, int salud, int defensa, int ataque){
         List<Attribute> atributos = new ArrayList();
