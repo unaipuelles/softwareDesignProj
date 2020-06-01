@@ -1,4 +1,4 @@
-package model.enemy;
+package factory;
 
 /**
  *

@@ -1,4 +1,6 @@
-package model.enemy;
+package factory;
+
+import factory.Dragon;
 
 /**
  *
