@@ -10,13 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Attribute;
-import model.Attack;
+import decorator.Attack;
 
 public abstract class Orc extends Enemy{
 
     public Orc(List<Attribute> attributes) {
         this.name = "Orco";
         this.attributes = attributes;
+        this.attacks = getAttacksDefault();
     }
     
     public List<Attack> getAttacksDefault() {
