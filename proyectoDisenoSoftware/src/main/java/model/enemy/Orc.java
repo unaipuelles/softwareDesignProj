@@ -17,6 +17,7 @@ public abstract class Orc extends Enemy{
     public Orc(List<Attribute> attributes) {
         this.name = "Orco";
         this.attributes = attributes;
+        this.attacks = getAttacksDefault();
     }
     
     public List<Attack> getAttacksDefault() {

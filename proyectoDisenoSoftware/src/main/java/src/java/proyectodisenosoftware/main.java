@@ -226,6 +226,27 @@ public class main {
         enemy = (Enemy) firstMap();
         enemy = decorateEnemy(enemy);
         combat = new Combat(enemy, character, combatNum);
+        if(combat.isCharacterWin()){
+            combatNum++;
+            enemy = (Enemy) secondMap();
+            enemy = decorateEnemy(enemy);
+            combat = new Combat(enemy, character, combatNum);
+            if(combat.isCharacterWin()){
+                combatNum++;
+                enemy = (Enemy) thirdMap();
+                enemy = decorateEnemy(enemy);
+                combat = new Combat(enemy, character, combatNum);
+                if(combat.isCharacterWin()){
+                    combatNum++;
+                    enemy = (Enemy) fourthMap();
+                    enemy = decorateEnemy(enemy);
+                    combat = new Combat(enemy, character, combatNum);
+                    if(combat.isCharacterWin()){
+                        showGameWinner();
+                    }
+                }
+            }
+        }
     }
     
     public static Dragon firstMap() {
@@ -235,6 +256,33 @@ public class main {
         valuesStrategy = getRandomStrategy(valuesStrategy);
         dragonCastle.setStrategy(valuesStrategy);
         return dragonCastle;
+    }
+    
+    public static Orc secondMap() {
+        EnemyFactory enemyFactory = new EnemyFactoryCastle();
+        Orc orcCastle = enemyFactory.createOrc();
+        ValuesStrategy valuesStrategy = null;
+        valuesStrategy = getRandomStrategy(valuesStrategy);
+        orcCastle.setStrategy(valuesStrategy);
+        return orcCastle;
+    }
+    
+    public static Dragon thirdMap() {
+        EnemyFactory enemyFactory = new EnemyFactoryMeadow();
+        Dragon dragonMeadow = enemyFactory.createDragon();
+        ValuesStrategy valuesStrategy = null;
+        valuesStrategy = getRandomStrategy(valuesStrategy);
+        dragonMeadow.setStrategy(valuesStrategy);
+        return dragonMeadow;
+    }
+    
+    public static Orc fourthMap() {
+        EnemyFactory enemyFactory = new EnemyFactoryMeadow();
+        Orc orcMeadow = enemyFactory.createOrc();
+        ValuesStrategy valuesStrategy = null;
+        valuesStrategy = getRandomStrategy(valuesStrategy);
+        orcMeadow.setStrategy(valuesStrategy);
+        return orcMeadow;
     }
     
     public static ValuesStrategy getRandomStrategy(ValuesStrategy valuesStrategy) {
@@ -290,5 +338,9 @@ public class main {
             }      
         }
         return attacks;
+    }
+    
+    public static void showGameWinner() {
+        System.out.println("*$#^& HAS GANADO EL JUEGO, ENHORABUENA *$#^&");
     }
 }

@@ -61,12 +61,21 @@ public class Character {
         this.hp = hp;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     private void setNameAndDefaultAttributes() {
         switch(type){
             case GUERRERO:
                 name = SGUERRERO;
                 attributes = getAllAttributesDefault(3,2,1,1,0,3);
                 attacks = getAllAttacksGuerrero();
+                
             break;
             case MAGO:
                 name = SMAGO;
@@ -120,5 +129,9 @@ public class Character {
         ataques.add(new Attack("Escupitajo", 2));
         
         return ataques;
+    }
+    
+    public void decreaseHp(int damage) {
+        hp = hp - damage;
     }
 }

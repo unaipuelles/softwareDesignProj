@@ -61,6 +61,14 @@ public abstract class Enemy {
         this.attacks = attacks;
     }
 
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     public int getHp() {
         return hp;
     }

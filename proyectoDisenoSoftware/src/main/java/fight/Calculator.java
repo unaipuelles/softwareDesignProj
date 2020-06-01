@@ -3,6 +3,7 @@ package fight;
 import State.Status;
 import java.util.List;
 import decorator.Attack;
+import java.util.concurrent.ThreadLocalRandom;
 import model.Attribute;
 
 
@@ -13,10 +14,10 @@ import model.Attribute;
  */
 
 public class Calculator {
-   private List<Attribute> attackerAtribb;
+   private List<Attribute> attackerAtrib;
    private List<Attribute> defenderAttrib;
    private Status attackerStatus;
-  private Status defenderStatus;
+   private Status defenderStatus;
    private Attack attack;
    
    private static Calculator instance = null;
@@ -33,7 +34,7 @@ public class Calculator {
        return instance;
    }
    
-   public int calculate() {
+   public int calculateAttack() {
        
        int damage =0;
        
@@ -44,14 +45,17 @@ public class Calculator {
        }
        else
        { 
-           //Sumar a damage el daño que hace el atacante segun sus atributos
-           //...
-           
-           //Sumar a damage el daño del estado del enemigo si esta quemado/corona
-           if(defenderStatus.getStatus()=='D')
+           //Calcular aleatoriamente mediante atributos si el ataque falla
+           if(getAttackProbability())
            {
-               damage+=50; //Sumarle el daño comun a todos los efectos de daño
-               System.out.println("El enemigo está " + defenderStatus.getName() + ", recibirá un extra de daño.");         
+               //Sumar a damage el daño que hace el atacante segun sus atributos
+               damage += attack.getDamage();
+               //Sumar a damage el daño del estado del enemigo si esta quemado/corona
+                if(defenderStatus.getStatus()=='D')
+                {
+                    damage+=5; //Sumarle el daño comun a todos los efectos de daño
+                    System.out.println("El enemigo está " + defenderStatus.getName() + ", recibirá un extra de daño.");         
+                }
            }
            return damage;
        }   
@@ -67,8 +71,8 @@ public class Calculator {
         return null; 		
     }
 
-    public void setAttackerAtribb(List<Attribute> attackerAtribb) {
-        this.attackerAtribb = attackerAtribb;
+    public void setAttackerAtribb(List<Attribute> attackerAtrib) {
+        this.attackerAtrib = attackerAtrib;
     }
 
     public void setDefenderAttrib(List<Attribute> defenderAttrib) {
@@ -89,5 +93,42 @@ public class Calculator {
 
     public static void setInstance(Calculator instance) {
         Calculator.instance = instance;
+    }
+    
+    public void setAllToCalculate(Attack attack, List<Attribute> attackerAtrib, Status attackerStatus, List<Attribute> defenderAttrib, Status defenderStatus) {
+        this.attack = attack;
+        this.attackerStatus = attackerStatus;
+        this.attackerAtrib = attackerAtrib;
+        this.defenderAttrib = defenderAttrib;
+        this.defenderStatus = defenderStatus;
+    }
+    
+    private boolean getAttackProbability() {
+        int totalPoints = 0;
+        boolean attackOk = false;
+        totalPoints += findAttribute(Attribute.FUERZA).getValor() * 2;
+        totalPoints += findAttribute(Attribute.AGILIDAD).getValor() * 3;
+        totalPoints += findAttribute(Attribute.ATAQUE).getValor() * 4;
+        if(totalPoints <= randomNum(0, 100))
+            attackOk = true;
+        
+        return attackOk;
+    }
+    
+    public Attribute findAttribute(int type) {
+        boolean encontrado = false;
+        Attribute atributo = null;
+        for(int x = 0; x < attackerAtrib.size() && encontrado == false; x++){
+            Attribute tmp = attackerAtrib.get(x);
+            if(tmp.equals(type)) {
+                atributo = tmp;
+                encontrado = true;
+            }
+        }
+        return atributo;
+    }
+    
+    public static int randomNum(int from, int to) {
+        return ThreadLocalRandom.current().nextInt(from, to + 1);
     }
 }
