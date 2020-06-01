@@ -135,4 +135,8 @@ public class Character {
     public void decreaseHp(int damage) {
         hp = hp - damage;
     }
+    
+    public void increaseHp (int heal) {
+        hp= hp + heal;
+    }
 }

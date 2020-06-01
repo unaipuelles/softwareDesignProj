@@ -18,6 +18,7 @@ import decorator.DedoDecorator;
 import decorator.MangoDecorator;
 import decorator.PiedraDecorator;
 import decorator.VaritaDecorator;
+import fight.Calculator;
 import strategy.GetStrategyValuesAttacker;
 import strategy.GetStrategyValuesDefender;
 import strategy.ValuesStrategy;
@@ -49,7 +50,7 @@ public class main {
         Character personaje = null;
         do{
             System.out.println("----Seleccion del personaje----\n");
-            System.out.println("1.- Guerrero\n2.-Mago\n3.-Gigante");
+            System.out.println("1.-Guerrero\n2.-Mago\n3.-Gigante");
             Scanner scanner = new Scanner(System.in);
             int characterNum = scanner.nextInt();
            
@@ -223,24 +224,25 @@ public class main {
     public static void startGame(Character character) {
         Enemy enemy;
         Combat combat;
+        Calculator calculator = Calculator.getInstance();
         enemy = (Enemy) firstMap();
         enemy = decorateEnemy(enemy);
-        combat = new Combat(enemy, character, combatNum);
+        combat = new Combat(enemy, character, combatNum, calculator);
         if(combat.isCharacterWin()){
             combatNum++;
             enemy = (Enemy) secondMap();
             enemy = decorateEnemy(enemy);
-            combat = new Combat(enemy, character, combatNum);
+            combat = new Combat(enemy, character, combatNum, calculator);
             if(combat.isCharacterWin()){
                 combatNum++;
                 enemy = (Enemy) thirdMap();
                 enemy = decorateEnemy(enemy);
-                combat = new Combat(enemy, character, combatNum);
+                combat = new Combat(enemy, character, combatNum, calculator);
                 if(combat.isCharacterWin()){
                     combatNum++;
                     enemy = (Enemy) fourthMap();
                     enemy = decorateEnemy(enemy);
-                    combat = new Combat(enemy, character, combatNum);
+                    combat = new Combat(enemy, character, combatNum, calculator);
                     if(combat.isCharacterWin()){
                         showGameWinner();
                     }

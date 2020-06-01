@@ -6,6 +6,7 @@ package factory;
  * @author daviddominguez
  */
 
+import State.Status;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public abstract class Dragon extends Enemy{
         this.name = "Dragon";
         this.attributes = attributes;
         this.attacks = getAttacksDefault();
+        this.status = new Status();
     }
     
     public List<Attack> getAttacksDefault() {
