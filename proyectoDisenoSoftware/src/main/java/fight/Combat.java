@@ -21,10 +21,10 @@ public class Combat {
     private final Calculator calculator;
     private boolean characterWin = false;
 
-    public Combat(Enemy enemy, Character character, int combatNum) {
+    public Combat(Enemy enemy, Character character, int combatNum, Calculator calculator) {
         this.enemy = enemy;
         this.character = character;
-        this.calculator = Calculator.getInstance();
+        this.calculator = calculator;
         this.combatNum = combatNum;
         startCombat();
     }
@@ -78,14 +78,14 @@ public class Combat {
         strBuilder.append("\n\n**** Ronda ");
         strBuilder.append(round);
         strBuilder.append(" ****\n");
-        strBuilder.append("Tú:                                        Enemigo:\n");
+        strBuilder.append("Tú:                              Enemigo:\n");
         strBuilder.append("-Nombre: ");
         strBuilder.append(character.getName());
-        strBuilder.append("                    -Nombre: ");
+        strBuilder.append("                -Nombre: ");
         strBuilder.append(enemy.getName());
         strBuilder.append("\n-Vida: ");
         strBuilder.append(character.getHp());
-        strBuilder.append("                    -Vida: ");
+        strBuilder.append("                       -Vida: ");
         strBuilder.append(enemy.getHp());
         System.out.println(strBuilder.toString());
     }
@@ -115,7 +115,7 @@ public class Combat {
                 calculator.setAllToCalculate(cAttack, character.getAttributes(), character.getStatus(), enemy.getAttributes(), enemy.getStatus()); //Establecemos los parametros al calculador
                 int damage = calculator.calculateAttack(); //El calculador nos devuelve el daño realizado
                 if(damage > 0) { //Miramos si el ataque ha sido fallido o no
-                    character.decreaseHp(damage);
+                    enemy.decreaseHp(damage);
                     showAttackResult(cAttack, damage); 
                 }
                 else {
@@ -124,7 +124,18 @@ public class Combat {
                 
             break;
             case 2: //Recuperar vida
-                //calculator.regenerate();
+               calculator.setAllToHeal(character.getAttributes(), character.getStatus(), enemy.getAttributes(), enemy.getStatus());
+               int heal = calculator.regenerate();
+               
+               if(heal > 0) {
+                   
+                   character.increaseHp(heal);
+                   showHealResult(heal);
+                   
+               }
+               else
+                   showFailedAttack();
+                
             break;   
         }
     }
@@ -145,7 +156,7 @@ public class Combat {
             if(actionNum > 0 && actionNum <= attacks.size()) {
                 attack = attacks.get(actionNum-1);
             }
-        }while (actionNum >= attacks.size());
+        }while (actionNum > attacks.size());
         
         return attack;
     }
@@ -175,6 +186,17 @@ public class Combat {
         strBuilder.append(damage);
         strBuilder.append(" al enemigo\n");
         System.out.println(strBuilder.toString());
+    }
+    
+    private void showHealResult (int heal) {
+        
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("\n");
+        strBuilder.append("Curación realizada con exito, te has curado ");
+        strBuilder.append(heal);
+        strBuilder.append(" puntos de vida\n");
+        System.out.println(strBuilder.toString());
+        
     }
     
     /**

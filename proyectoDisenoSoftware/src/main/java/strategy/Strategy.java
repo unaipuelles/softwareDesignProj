@@ -11,17 +11,17 @@ import java.util.List;
 public class Strategy {
     
     protected int doAtack;
-    protected int defend;
+    protected int heal;
 
     public Strategy() {
         doAtack = 50;
-        defend = 50;
+        heal = 50;
     }
     
     public List<Integer> getStrategyValues() {
         List<Integer> values = new ArrayList();
         values.add(doAtack);
-        values.add(defend);
+        values.add(heal);
         
         return values;
     }
