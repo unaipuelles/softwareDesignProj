@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.factory">
+  <ClassDiagramComponents>
+    <Class name="Dragon" package="factory" visibility="public" isAbstract="true" xPosition="897.0" yPosition="773.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="List&lt;Attribute&gt;" name="attributes"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAttacksDefault" returnType="List&lt;Attack&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DragonCastle" package="factory" visibility="public" xPosition="783.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="DragonMeadow" package="factory" visibility="public" xPosition="1085.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Enemy" package="factory" visibility="public" isAbstract="true" xPosition="960.0" yPosition="188.0">
+      <Fields>
+        <Field name="name" type="String" visibility="protected"/>
+        <Field name="attributes" type="List&lt;Attribute&gt;" visibility="protected"/>
+        <Field name="status" type="Status" visibility="protected"/>
+        <Field name="attacks" type="List&lt;Attack&gt;" visibility="protected"/>
+        <Field name="strategy" type="ValuesStrategy" visibility="protected"/>
+        <Field name="enviroment" type="String" visibility="protected"/>
+        <Field name="hp" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="getAllAttributesDefault" returnType="List&lt;Attribute&gt;" visibility="public">
+          <Argument type="int" name="fuerza"/>
+          <Argument type="int" name="resistencia"/>
+          <Argument type="int" name="agilidad"/>
+          <Argument type="int" name="salud"/>
+          <Argument type="int" name="defensa"/>
+          <Argument type="int" name="ataque"/>
+        </Method>
+        <Method name="setStrategy" returnType="void" visibility="public">
+          <Argument type="ValuesStrategy" name="strategy"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttributes" returnType="List&lt;Attribute&gt;" visibility="public"/>
+        <Method name="getAttacks" returnType="List&lt;Attack&gt;" visibility="public"/>
+        <Method name="getStrategy" returnType="ValuesStrategy" visibility="public"/>
+        <Method name="getEnviroment" returnType="String" visibility="public"/>
+        <Method name="setAttacks" returnType="void" visibility="public">
+          <Argument type="List&lt;Attack&gt;" name="attacks"/>
+        </Method>
+        <Method name="getStatus" returnType="Status" visibility="public"/>
+        <Method name="setStatus" returnType="void" visibility="public">
+          <Argument type="Status" name="status"/>
+        </Method>
+        <Method name="getHp" returnType="int" visibility="public"/>
+        <Method name="setHp" returnType="void" visibility="public">
+          <Argument type="int" name="hp"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="EnemyFactoryCastle" package="factory" visibility="public" xPosition="99.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createDragon" returnType="Dragon" visibility="public"/>
+        <Method name="createOrc" returnType="Orc" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="EnemyFactoryMeadow" package="factory" visibility="public" xPosition="398.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="createDragon" returnType="Dragon" visibility="public"/>
+        <Method name="createOrc" returnType="Orc" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Orc" package="factory" visibility="public" isAbstract="true" xPosition="1449.0" yPosition="773.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="List&lt;Attribute&gt;" name="attributes"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAttacksDefault" returnType="List&lt;Attack&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OrcCastle" package="factory" visibility="public" xPosition="1357.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="OrcMeadow" package="factory" visibility="public" xPosition="1645.0" yPosition="1079.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Interface name="EnemyFactory" package="factory" visibility="public" xPosition="260.0" yPosition="773.0">
+      <Methods>
+        <Method name="createDragon" returnType="Dragon" visibility="package"/>
+        <Method name="createOrc" returnType="Orc" visibility="package"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="factory.Orc" target="factory.Enemy"/>
+    <IsRelation name="is" source="factory.DragonMeadow" target="factory.Dragon"/>
+    <IsRelation name="is" source="factory.OrcCastle" target="factory.Orc"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="factory.EnemyFactoryCastle" target="factory.EnemyFactory"/>
+    <IsRelation name="is" source="factory.DragonCastle" target="factory.Dragon"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="factory.EnemyFactoryMeadow" target="factory.EnemyFactory"/>
+    <IsRelation name="is" source="factory.OrcMeadow" target="factory.Orc"/>
+    <IsRelation name="is" source="factory.Dragon" target="factory.Enemy"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
