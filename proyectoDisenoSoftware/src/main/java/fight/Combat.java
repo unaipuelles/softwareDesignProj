@@ -2,7 +2,7 @@ package fight;
 
 import java.util.Scanner;
 
-import model.enemy.Enemy;
+import factory.Enemy;
 import model.Character;
 import decorator.Attack;
 import java.util.List;

@@ -27,6 +27,7 @@ public class Character {
     public Character(int type) {
         this.type = type;
         setNameAndDefaultAttributes();
+        this.status= new Status();
     }
     
     public String getName() {
