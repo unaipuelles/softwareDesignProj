@@ -50,6 +50,7 @@ public class Calculator {
                     damage += 10; //Sumarle el daño comun a todos los efectos de daño
                     System.out.println("El enemigo está " + defenderStatus.getName() + ", recibirá un extra de daño.");
                 }
+                    
             }
             return damage;
         }
