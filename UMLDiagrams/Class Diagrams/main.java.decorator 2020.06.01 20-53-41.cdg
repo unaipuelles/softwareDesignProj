@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.decorator">
+  <ClassDiagramComponents>
+    <Class name="Attack" package="decorator" visibility="public" xPosition="1495.0" yPosition="42.0">
+      <Fields>
+        <Field name="name" type="String" visibility="private" isFinal="true"/>
+        <Field name="decoratedName" type="String" visibility="private"/>
+        <Field name="damage" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="damage"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDamage" returnType="int" visibility="public"/>
+        <Method name="setDamage" returnType="void" visibility="public">
+          <Argument type="int" name="damage"/>
+        </Method>
+        <Method name="setDecoratedName" returnType="void" visibility="public">
+          <Argument type="String" name="decoratedName"/>
+        </Method>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ColaDecorator" package="decorator" visibility="public" xPosition="-6.0" yPosition="507.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="conPinchos" returnType="String" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Decorator" package="decorator" visibility="public" isAbstract="true" xPosition="496.0" yPosition="42.0">
+      <Fields>
+        <Field name="mda" type="MessageDecoratorAttack" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DedoDecorator" package="decorator" visibility="public" xPosition="351.0" yPosition="507.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="conFuerza" returnType="String" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MangoDecorator" package="decorator" visibility="public" xPosition="706.0" yPosition="507.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="conMangoDeOro" returnType="String" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PiedraDecorator" package="decorator" visibility="public" xPosition="1070.0" yPosition="507.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="grande" returnType="String" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="VaritaDecorator" package="decorator" visibility="public" xPosition="1434.0" yPosition="507.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MessageDecoratorAttack" name="mda"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="conOjo" returnType="String" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getAttackMessage" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="MessageDecoratorAttack" package="decorator" visibility="public" xPosition="1158.0" yPosition="42.0">
+      <Methods>
+        <Method name="getAttackMessage" returnType="String" visibility="package"/>
+        <Method name="getName" returnType="String" visibility="package"/>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="decorator.VaritaDecorator" target="decorator.Decorator"/>
+    <IsRelation name="is" source="decorator.PiedraDecorator" target="decorator.Decorator"/>
+    <IsRelation name="is" source="decorator.MangoDecorator" target="decorator.Decorator"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="decorator.Attack" target="decorator.MessageDecoratorAttack"/>
+    <IsRelation name="is" source="decorator.DedoDecorator" target="decorator.Decorator"/>
+    <IsRelation name="is" source="decorator.ColaDecorator" target="decorator.Decorator"/>
+    <HasRelation name="mda" source="decorator.Decorator" target="decorator.MessageDecoratorAttack" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="decorator.Decorator" target="decorator.MessageDecoratorAttack"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

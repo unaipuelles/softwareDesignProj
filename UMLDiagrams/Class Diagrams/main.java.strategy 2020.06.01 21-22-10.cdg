@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.strategy">
+  <ClassDiagramComponents>
+    <Class name="GetStrategyValuesAttacker" package="strategy" visibility="public" xPosition="765.0" yPosition="490.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getStrategyValues" returnType="List&lt;Integer&gt;" visibility="public">
+          <Argument type="Strategy" name="strategy"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="GetStrategyValuesDefender" package="strategy" visibility="public" xPosition="1247.0" yPosition="490.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getStrategyValues" returnType="List&lt;Integer&gt;" visibility="public">
+          <Argument type="Strategy" name="strategy"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Strategy" package="strategy" visibility="public" xPosition="212.0" yPosition="462.0">
+      <Fields>
+        <Field name="doAtack" type="int" visibility="protected"/>
+        <Field name="defend" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getStrategyValues" returnType="List&lt;Integer&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ValuesStrategy" package="strategy" visibility="public" xPosition="157.0" yPosition="120.0">
+      <Fields>
+        <Field name="getStrategyValues" type="GetStrategyValues" visibility="protected"/>
+        <Field name="strategy" type="Strategy" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="GetStrategyValues" name="getStrategyValues"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getStrategyValues" returnType="List&lt;Integer&gt;" visibility="public"/>
+      </Methods>
+    </Class>
+    <Interface name="GetStrategyValues" package="strategy" visibility="public" xPosition="985.0" yPosition="154.0">
+      <Methods>
+        <Method name="getStrategyValues" returnType="List&lt;Integer&gt;" visibility="package">
+          <Argument type="Strategy" name="strategy"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="strategy.GetStrategyValuesDefender" target="strategy.GetStrategyValues"/>
+    <HasRelation name="getStrategyValues" source="strategy.ValuesStrategy" target="strategy.GetStrategyValues" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="strategy" source="strategy.ValuesStrategy" target="strategy.Strategy" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="strategy.GetStrategyValuesAttacker" target="strategy.GetStrategyValues"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="main.java.State">
+  <ClassDiagramComponents>
+    <Class name="BurnedStatus" package="State" visibility="public" xPosition="957.0" yPosition="568.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Status" name="status"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="CoronavirusStatus" package="State" visibility="public" xPosition="1224.0" yPosition="568.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Status" name="status"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="ParalyzedStatus" package="State" visibility="public" xPosition="435.0" yPosition="568.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Status" name="status"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="StandardStatus" package="State" visibility="public" xPosition="703.0" yPosition="568.0">
+      <Fields/>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Status" name="status"/>
+        </Constructor>
+      </Constructors>
+      <Methods/>
+    </Class>
+    <Class name="Status" package="State" visibility="public" xPosition="495.0" yPosition="63.0">
+      <Fields>
+        <Field name="turns" type="int" visibility="protected"/>
+        <Field name="type" type="StatusType" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="newStatus" returnType="void" visibility="public"/>
+        <Method name="getStatus" returnType="char" visibility="public"/>
+        <Method name="incTurn" returnType="void" visibility="protected"/>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getEffect" returnType="char" visibility="protected"/>
+      </Methods>
+    </Class>
+    <Class name="StatusType" package="State" visibility="public" isAbstract="true" xPosition="867.0" yPosition="65.0">
+      <Fields>
+        <Field name="status" type="Status" visibility="protected"/>
+        <Field name="effect" type="char" visibility="protected"/>
+        <Field name="name" type="String" visibility="protected"/>
+        <Field name="duration" type="int" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Status" name="status"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getName" returnType="String" visibility="public"/>
+        <Method name="getEffect" returnType="char" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="State.ParalyzedStatus" target="State.StatusType"/>
+    <IsRelation name="is" source="State.BurnedStatus" target="State.StatusType"/>
+    <IsRelation name="is" source="State.CoronavirusStatus" target="State.StatusType"/>
+    <IsRelation name="is" source="State.StandardStatus" target="State.StatusType"/>
+    <HasRelation name="status" source="State.StatusType" target="State.Status" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="type" source="State.Status" target="State.StatusType" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Calculator">
+  <ClassDiagramComponents>
+    <Class name="Calculator" package="fight" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="attackerAtrib" type="List&lt;Attribute&gt;" visibility="private"/>
+        <Field name="defenderAttrib" type="List&lt;Attribute&gt;" visibility="private"/>
+        <Field name="attackerStatus" type="Status" visibility="private"/>
+        <Field name="defenderStatus" type="Status" visibility="private"/>
+        <Field name="attack" type="Attack" visibility="private"/>
+        <Field name="instance" type="Calculator" visibility="private" isStatic="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="private"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="Calculator" visibility="public" isStatic="true"/>
+        <Method name="calculateAttack" returnType="int" visibility="public"/>
+        <Method name="clone" returnType="Calculator" visibility="public"/>
+        <Method name="setAttackerAtribb" returnType="void" visibility="public">
+          <Argument type="List&lt;Attribute&gt;" name="attackerAtrib"/>
+        </Method>
+        <Method name="setDefenderAttrib" returnType="void" visibility="public">
+          <Argument type="List&lt;Attribute&gt;" name="defenderAttrib"/>
+        </Method>
+        <Method name="setAttackerStatus" returnType="void" visibility="public">
+          <Argument type="Status" name="attackerStatus"/>
+        </Method>
+        <Method name="setDefenderStatus" returnType="void" visibility="public">
+          <Argument type="Status" name="defenderStatus"/>
+        </Method>
+        <Method name="setAttack" returnType="void" visibility="public">
+          <Argument type="Attack" name="attack"/>
+        </Method>
+        <Method name="setInstance" returnType="void" visibility="public" isStatic="true">
+          <Argument type="Calculator" name="instance"/>
+        </Method>
+        <Method name="setAllToCalculate" returnType="void" visibility="public">
+          <Argument type="Attack" name="attack"/>
+          <Argument type="List&lt;Attribute&gt;" name="attackerAtrib"/>
+          <Argument type="Status" name="attackerStatus"/>
+          <Argument type="List&lt;Attribute&gt;" name="defenderAttrib"/>
+          <Argument type="Status" name="defenderStatus"/>
+        </Method>
+        <Method name="getAttackProbability" returnType="boolean" visibility="private"/>
+        <Method name="findAttribute" returnType="Attribute" visibility="public">
+          <Argument type="int" name="type"/>
+        </Method>
+        <Method name="randomNum" returnType="int" visibility="public" isStatic="true">
+          <Argument type="int" name="from"/>
+          <Argument type="int" name="to"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="instance" source="fight.Calculator" target="fight.Calculator" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="fight.Calculator" target="fight.Calculator" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
